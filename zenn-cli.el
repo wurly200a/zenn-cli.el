@@ -1,7 +1,7 @@
 ;;; zenn-cli.el -- functions for using Zenn CLI
 
 ;; Author: Wurly, July 2022
-;; Version: 0.01
+;; Version: 0.2.0
 
 ;;; Install:
 
@@ -14,9 +14,6 @@
 ;;     (custom-set-variables
 ;;      '(zenn-cli-default-directory "/path/to/zenn-contents/"))
 ;;    )
-
-;;; History:
-;; 2022.07.23          (ver 0.01) | new
 
 ;;; Code:
 
@@ -119,6 +116,14 @@
   (interactive)
   (unless (get-process zenn-cli-process-name)
     (zenn-cli-command-async zenn-cli-process-name t "npx" "zenn" "preview")
+    )
+)
+
+(defun zenn-cli-install()
+  "install"
+  (interactive)
+  (unless (get-process zenn-cli-process-name)
+    (zenn-cli-command-async zenn-cli-process-name t "npm" "install" "zenn-cli@latest")
     )
 )
 
