@@ -223,14 +223,14 @@
                  (setq temp-temp-list (cdr temp-temp-list))))
         )
 
-      (insert "---\n")
-      (let (rvs-other-list)
-        (setq rvs-other-list (reverse other-list))
-        (while (progn
-                 (setq temp-line (car rvs-other-list))
-                 (insert temp-line "\n")
-                 (setq rvs-other-list (cdr rvs-other-list))))
-        )
+;      (insert "---\n")
+;      (let (rvs-other-list)
+;        (setq rvs-other-list (reverse other-list))
+;        (while (progn
+;                 (setq temp-line (car rvs-other-list))
+;                 (insert temp-line "\n")
+;                 (setq rvs-other-list (cdr rvs-other-list))))
+;        )
 
 ;      (message "car=%s" (car temp-list))
 
