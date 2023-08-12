@@ -49,6 +49,9 @@
 (define-key zenn-cli-select-mode-map "\C-m" 'zenn-cli-select-article)
 (define-key zenn-cli-select-mode-map "f" 'zenn-cli-select-article)
 (define-key zenn-cli-select-mode-map "g" 'zenn-cli-list-articles)
+(define-key zenn-cli-select-mode-map "p" 'previous-line)
+(define-key zenn-cli-select-mode-map "n" 'next-line)
+(define-key zenn-cli-select-mode-map "c" 'zenn-cli-new-article)
 
 ; internal function
 
