@@ -249,12 +249,21 @@
     )
   )
 
+(defun zenn-cli-get-title-from-file (file-path)
+  "Extract the title from a Zenn article file specified by FILE-PATH."
+  (with-temp-buffer
+    (insert-file-contents file-path)
+    (goto-char (point-min))
+    (if (re-search-forward "^title2: \"\\(.*?\\)\"" nil t)
+        (match-string 1)
+      "No title found in the file.")))
+
 (defun zenn-cli-select-article ()
   "Select the article."
   (interactive)
 ;  (message "zenn-cli-select-article")
 
-  (let (start-point end-point temp-line temp-list now-buffer)
+  (let (start-point end-point temp-line temp-list temp-line2 title-string now-buffer)
     (beginning-of-line)
     (setq start-point (point))
     (end-of-line)
@@ -264,8 +273,12 @@
     (setq temp-list (split-string temp-line " "))
 ;    (message "%s" (car temp-list))
 ;    (setq now-buffer (current-buffer))
-    (find-file-other-window (concat zenn-cli-default-directory "articles/" (car temp-list) ".md"))
+    (setq temp-line2 (car temp-list))
+    (find-file (concat zenn-cli-default-directory "articles/" temp-line2 ".md"))
 ;    (switch-to-prev-buffer)
+    (setq buffer-file-name (concat zenn-cli-default-directory "articles/" temp-line2 ".md")) ;; Change buffer-file-name to the desired buffer name
+    (setq title-string (zenn-cli-get-title-from-file buffer-file-name))
+    (rename-buffer (concat title-string (concat (concat " [" temp-line2) "]"))) ;; Rename the buffer
     )
 )
 
