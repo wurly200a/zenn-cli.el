@@ -254,7 +254,7 @@
   (with-temp-buffer
     (insert-file-contents file-path)
     (goto-char (point-min))
-    (if (re-search-forward "^title2: \"\\(.*?\\)\"" nil t)
+    (if (re-search-forward "^title: \"\\(.*?\\)\"" nil t)
         (match-string 1)
       "No title found in the file.")))
 
